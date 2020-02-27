@@ -23,7 +23,7 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: Baoding Weather Report (${{env.REPORT_DATE}})
-          body: file://result.html
+          body: file://weather_forecast.html
           to: xiaokang.188@qq.com
           from: GitHub Actions
           content_type: text/html
