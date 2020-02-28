@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: 'Checkout codes'
         uses: actions/checkout@v1
-      - name: 'Get Weather'
+      - name: 'Get Baoding Weather'
         run: bash ./weather.sh
       - name: 'Get Date'
         run: echo "::set-env name=REPORT_DATE::$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')"
