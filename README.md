@@ -1,4 +1,4 @@
-GitHub Actions:  用电子邮件发送每日天气-xiaokang
+GitHub Actions:  用电子邮件发送每日天气预报
 
 > 微信公众号：小康新鲜事儿
 
