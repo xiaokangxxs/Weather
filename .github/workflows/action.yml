@@ -23,7 +23,7 @@ jobs:
             pip install -U lxml
             pip install -U fake_useragent
       - name: 'Morning Greetings' 
-        run: bash ./weather.sh ${{ secrets.USER }} ${{ secrets.PARTY }} ${{ secrets.CORP_ID }} ${{ secrets.CORP_SECRET }}
+        run: bash ./greetings.sh ${{ secrets.USER }} ${{ secrets.PARTY }} ${{ secrets.CORP_ID }} ${{ secrets.CORP_SECRET }}
       - name: 'Get Date'
         run: echo "APP_VERSION=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
       - name: 'Send mail'
