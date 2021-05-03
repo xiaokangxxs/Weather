@@ -12,11 +12,16 @@ jobs:
       - name: 'Checkout Codes'
         uses: actions/checkout@v2
       - name: 'Set up Python'
-        uses: actions/setup-python@v2
-	with:
-	  python-version: 2.7
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: 2.7
         run: |
-	  pip install -U requests simplejson optparse lxml fake_useragent
+	  pip install --upgrade pip
+	  pip install -U requests
+	  pip install -U simplejson
+	  pip install -U optparse
+	  pip install -U lxml
+	  pip install -U fake_useragent
       - name: 'Morning Greetings' 
         run: bash ./weather.sh ${{ secrets.USER }} ${{ secrets.PARTY }} ${{ secrets.CORP_ID }} ${{ secrets.CORP_SECRET }}
       - name: 'Get Date'
