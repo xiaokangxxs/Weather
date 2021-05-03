@@ -1,13 +1,13 @@
-name: 'GitHub Actions Weather Bot'
+name: 'GitHub Actions Morning Greetings'
 
 on:
   push:
   schedule:
-    - cron: '0 21 * * *'
+    - cron: '0 -4,5,21 * * *'
 
 jobs:
-  bot:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-18.04
     steps:
       - name: 'Checkout Codes'
         uses: actions/checkout@v2
@@ -34,9 +34,9 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: Morning Greetings (${{env.REPORT_DATE}})
-          body: file://weather_forecast.html
+          body: file://morning_greetings.html
           to: xiaokang.188@qq.com
           from: GitHub Actions
           content_type: text/html
       - name: 'Clean file' 
-        run: rm -f weather_forecast.html
+        run: rm -f morning_greetings.html

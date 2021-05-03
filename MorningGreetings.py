@@ -154,7 +154,6 @@ def get_weather():
     url = "https://d1.weather.com.cn/sk_2d/101010100.html?_=1618886817920"
     r_url = requests.get(url, headers=get_fake_ua(), verify=False)
     message = json.loads(r_url.text.encode("latin1").decode("utf8").replace("var dataSK = ", ""))
-    print(message)
     cityname = message['cityname']
     aqi = int(message['aqi'])
     sd = message['sd']
@@ -181,7 +180,7 @@ def get_weather():
 def get_top_list():
     url = "http://top.baidu.com/"
     r = requests.get(url, headers=get_fake_ua())
-    r.encoding = 'gbk'
+    r.encoding = 'gb2312'
     tree = etree.HTML(r.text)
     li_list = tree.xpath('//*[@id="hot-list"]/li')
     top_list = []
@@ -204,14 +203,14 @@ def get_daily_sentence():
 
 def greetings():
     hour = int(time.strftime('%H', time.localtime(time.time())))
-    if hour == 6:
+    if hour <= 6:
         return "小康，早上好！\n"
-    if hour == 12:
+    if hour >= 12:
         return "小康，中午好！\n"
-    if hour == 21:
+    if hour >= 21:
         return "小康，晚上好！\n"
     else:
-        return "认真生活,努力长大"
+        return "认真生活,努力长大-Github Action强力驱动"
 
 
 def get_sendContent():
