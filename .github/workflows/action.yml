@@ -20,7 +20,6 @@ jobs:
             pip install --upgrade pip
             pip install -U requests
             pip install -U simplejson
-            pip install -U optparse
             pip install -U lxml
             pip install -U fake_useragent
       - name: 'Morning Greetings' 
