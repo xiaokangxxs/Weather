@@ -9,19 +9,17 @@ jobs:
   bot:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout codes'
-        uses: actions/checkout@v2
-      - name: 'Set up Python 2.7'
-      	uses: actions/setup-python@v2
-      	with:
-    	  python-version: 2.7
-        run: |
-      	  pip install -U requests
-      	  pip install -U simplejson
-      	  pip install -U optparse
-      	  pip install -U lxml
-      	  pip install -U fake_useragent
-      - name: 'Get Baoding Weather' 
+      - uses: actions/checkout@v2
+	  - uses: actions/setup-python@v2
+	    with:
+	      python-version: 2.7
+	  - run: |
+	  	  pip install -U requests
+	  	  pip install -U simplejson
+	  	  pip install -U optparse
+	  	  pip install -U lxml
+	  	  pip install -U fake_useragent
+      - name: 'Morning Greetings' 
         run: bash ./weather.sh ${{ secrets.USER }} ${{ secrets.PARTY }} ${{ secrets.CORP_ID }} ${{ secrets.CORP_SECRET }}
       - name: 'Get Date'
         run: echo "APP_VERSION=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
@@ -32,7 +30,7 @@ jobs:
           server_port: 465
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: Baoding Weather Report (${{env.REPORT_DATE}})
+          subject: Morning Greetings (${{env.REPORT_DATE}})
           body: file://weather_forecast.html
           to: xiaokang.188@qq.com
           from: GitHub Actions
