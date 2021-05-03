@@ -9,11 +9,14 @@ jobs:
   bot:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - name: 'Checkout Codes'
+        uses: actions/checkout@v2
+      - name: 'Set up Python'
+        uses: actions/setup-python@v2
 	with:
 	  python-version: 2.7
-      - run: pip install -U requests simplejson optparse lxml fake_useragent
+        run: |
+	  pip install -U requests simplejson optparse lxml fake_useragent
       - name: 'Morning Greetings' 
         run: bash ./weather.sh ${{ secrets.USER }} ${{ secrets.PARTY }} ${{ secrets.CORP_ID }} ${{ secrets.CORP_SECRET }}
       - name: 'Get Date'
