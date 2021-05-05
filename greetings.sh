@@ -2,9 +2,7 @@
 
 set -eux
 
-read -p "Timezone (default: Asia/Shanghai): " TZONE
-TZONE=${TZONE:-'Asia/Shanghai'}
-timedatectl set-timezone $TZONE
+timedatectl set-timezone "Asia/Shanghai"
 
 apt install -y language-pack-zh-hans language-pack-zh-hant
 `which update-locale` LANG=zh_CN.UTF-8
