@@ -5,7 +5,7 @@ set -eux
 sudo timedatectl set-timezone "Asia/Shanghai"
 
 sudo apt install -y language-pack-zh-hans language-pack-zh-hant
-`which update-locale` LANG=zh_CN.UTF-8
+sudo `which update-locale` LANG=zh_CN.UTF-8
 
 USER=$1
 PARTY=$2
