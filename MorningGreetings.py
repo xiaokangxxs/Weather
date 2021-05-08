@@ -198,7 +198,7 @@ def greetings():
 def get_sendContent():
     sendContent = greetings() + "\n" + get_week_day(datetime.date.today()) + "\n\n" + str(
         get_bd_top_list()).replace(
-        "', '", '\n').replace("['", "").replace("']", "") + "\n\n" + str(get_wb_top_list()) + "\n\n" + get_daily_sentence()
+        "', '", '\n').replace("['", "").replace("']", "") + "\n\n" + get_daily_sentence()
     return sendContent
 
 
