@@ -150,33 +150,6 @@ def get_week_day(date):
     return "今天日期为：" + str(datetime.date.today()) + ' ' + week_day_dict[day]
 
 
-def get_weather():
-    url = "https://d1.weather.com.cn/sk_2d/101010100.html?_=1618886817920"
-    r_url = requests.get(url, headers=get_fake_ua(), verify=False)
-    message = json.loads(r_url.text.encode("latin1").decode("utf8").replace("var dataSK = ", ""))
-    cityname = message['cityname']
-    aqi = int(message['aqi'])
-    sd = message['sd']
-    wd = message['WD']
-    ws = message['WS']
-    temp = message['temp']
-    weather = message['weather']
-    if aqi <= 50:
-        airQuality = "优"
-    elif aqi <= 100:
-        airQuality = "良"
-    elif aqi <= 150:
-        airQuality = "轻度污染"
-    elif aqi <= 200:
-        airQuality = "中度污染"
-    elif aqi <= 300:
-        airQuality = "重度污染"
-    else:
-        airQuality = "严重污染"
-    return cityname + " " + '今日天气：' + weather + ' 温度：' + temp + ' 摄氏度 ' + wd + ws + ' 相对湿度：' + sd + ' 空气质量：' \
-           + str(aqi) + "（" + airQuality + "）"
-
-
 def get_top_list():
     url = "http://top.baidu.com/"
     r = requests.get(url, headers=get_fake_ua())
@@ -214,7 +187,7 @@ def greetings():
 
 
 def get_sendContent():
-    sendContent = greetings() + "\n" + get_week_day(datetime.date.today()) + "\n\n" + get_weather() + "\n\n" + str(
+    sendContent = greetings() + "\n" + get_week_day(datetime.date.today()) + "\n\n" + str(
         get_top_list()).replace(
         "', '", '\n').replace("['", "").replace("']", "") + "\n\n" + get_daily_sentence()
     return sendContent
