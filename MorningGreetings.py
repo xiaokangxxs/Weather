@@ -19,9 +19,7 @@ import logging
 import sys
 from optparse import OptionParser
 
-reload(sys)
 
-sys.setdefaultencoding('utf8')
 filelog = logging.FileHandler(filename='./morning_greetings_action.log', mode='a', encoding='utf-8')
 fmt = logging.Formatter(fmt="%(asctime)s - %(name)s - %(levelname)s :  %(message)s", datefmt='%Y-%m-%d %H:%M:%S')
 filelog.setFormatter(fmt)
