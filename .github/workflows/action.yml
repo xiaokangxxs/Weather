@@ -14,7 +14,7 @@ jobs:
       - name: 'Set up Python'
         uses: actions/setup-python@v2.2.2
         with:
-          python-version: 3.7
+          python-version: 2.7
       - name: 'Install pip packages' 
         run: |
             pip install --upgrade pip
@@ -33,7 +33,7 @@ jobs:
           server_port: 465
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: Morning Greetings (${{env.REPORT_DATE}})
+          subject: Greetings-xiaokang
           body: file://morning_greetings.html
           to: xiaokang.188@qq.com
           from: GitHub Actions
