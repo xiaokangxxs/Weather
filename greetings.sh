@@ -20,7 +20,7 @@ UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73
 curl \
   -H "Accept-Language: $LANGUAGE" \
   -H "User-Agent: $UA" \
-  -o weather_forecast.html \
+  -o morning_greetings.html \
   wttr.in/$CITY?format=3\&$UNIT
 
 python MorningGreetings.py --user $USER --party $PARTY --corpid $CORP_ID --corpsecret $CORP_SECRET >> morning_greetings.html
