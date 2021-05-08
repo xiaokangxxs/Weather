@@ -3,7 +3,7 @@ name: 'GitHub Actions Morning Greetings'
 on:
   push:
   schedule:
-    - cron: '0 5,21 * * *'
+    - cron: '0 4,13,21 * * *'
 
 jobs:
   build:
@@ -14,7 +14,7 @@ jobs:
       - name: 'Set up Python'
         uses: actions/setup-python@v2.2.2
         with:
-          python-version: 2.7
+          python-version: 3.7
       - name: 'Install pip packages' 
         run: |
             pip install --upgrade pip
@@ -23,7 +23,7 @@ jobs:
             pip install -U lxml
             pip install -U fake_useragent
       - name: 'Morning Greetings' 
-        run: bash ./greetings.sh ${{ secrets.USER }} ${{ secrets.PARTY }} ${{ secrets.CORP_ID }} ${{ secrets.CORP_SECRET }}
+        run: bash greetings.sh ${{ secrets.USER }} ${{ secrets.PARTY }} ${{ secrets.CORP_ID }} ${{ secrets.CORP_SECRET }}
       - name: 'Get Date'
         run: echo "APP_VERSION=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
       - name: 'Send mail'
