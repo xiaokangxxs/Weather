@@ -146,7 +146,7 @@ def get_week_day(date):
     return "今天日期为：" + str(datetime.date.today()) + ' ' + week_day_dict[day]
 
 
-def get_top_list():
+def get_bd_top_list():
     url = "http://top.baidu.com/"
     r = requests.get(url, headers=get_fake_ua())
     r.encoding = 'gb2312'
@@ -157,6 +157,19 @@ def get_top_list():
         num = li_list.index(li) + 1
         title = li.xpath('./a/@title')[0]
         top_list.append(str(num) + ':' + title)
+    return top_list
+
+
+def get_wb_top_list():
+    url = "https://api.iyk0.com/wbr"
+    r = requests.get(url, verify=False)
+    r = str("[" + str(r.content).replace("\r\n", ",") + "]").replace(",]", "]")
+    wb_list = json.loads(r)
+    top_list = []
+    for per_wb in wb_list:
+        title = per_wb.get('title')
+        link = per_wb.get('url')
+        top_list.append(str(title) + '\n' + link)
     return top_list
 
 
@@ -172,11 +185,11 @@ def get_daily_sentence():
 
 def greetings():
     hour = int(time.strftime('%H', time.localtime(time.time())))
-    if hour <= 6:
+    if hour <= 8:
         return "小康，早上好！\n"
-    if hour >= 12:
+    if hour >= 12 and hour <= 14:
         return "小康，中午好！\n"
-    if hour >= 21:
+    if hour >= 21 and hour <= 23:
         return "小康，晚上好！\n"
     else:
         return "认真生活,努力长大-Github Action强力驱动"
@@ -184,8 +197,8 @@ def greetings():
 
 def get_sendContent():
     sendContent = greetings() + "\n" + get_week_day(datetime.date.today()) + "\n\n" + str(
-        get_top_list()).replace(
-        "', '", '\n').replace("['", "").replace("']", "") + "\n\n" + get_daily_sentence()
+        get_bd_top_list()).replace(
+        "', '", '\n').replace("['", "").replace("']", "") + "\n\n" + str(get_wb_top_list()) + "\n\n" + get_daily_sentence()
     return sendContent
 
 
