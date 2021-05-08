@@ -176,16 +176,15 @@ def get_weather():
 
 
 def get_top_list():
-    url = "http://top.baidu.com/"
-    r = requests.get(url, headers=get_fake_ua())
-    r.encoding = 'gb2312'
-    tree = etree.HTML(r.text)
-    li_list = tree.xpath('//*[@id="hot-list"]/li')
+    url = "https://api.iyk0.com/wbr"
+    r = requests.get(url, verify=False)
+    r = str("[" + str(r.content).replace("\r\n", ",") + "]").replace(",]", "]")
+    wb_list = json.loads(r)
     top_list = []
-    for li in li_list:
-        num = li_list.index(li) + 1
-        title = li.xpath('./a/@title')[0]
-        top_list.append(str(num) + ':' + title + '!')
+    for per_wb in wb_list:
+        title = per_wb.get('title','xiaokang')
+        link = per_wb.get('url','https://www.xiaokang.cool/')
+        top_list.append(str(title) + '\n' + link)
     return top_list
 
 
