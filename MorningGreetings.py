@@ -211,7 +211,7 @@ def main():
     corpid = args["corpid"]
     corpsecret = args["corpsecret"]
     contents = get_sendContent()
-    suffix = """![60秒读懂世界]("http://api.03c3.cn/zb/")"""
+    suffix = """![60秒读懂世界](http://api.03c3.cn/zb/)"""
     contents = contents + suffix
     print(contents)
     party_id = part_dict.get(party)
