@@ -211,9 +211,9 @@ def main():
     corpid = args["corpid"]
     corpsecret = args["corpsecret"]
     contents = get_sendContent()
-    prefix = """<p>"""
-    suffix = """</p><img src="http://api.03c3.cn/zb/" alt="微信公众号：小康新鲜事儿" class="shrinkToFit transparent" width="72" height="271">"""
-    print(prefix + contents + suffix)
+    suffix = """[60秒读懂世界]("http://api.03c3.cn/zb/")"""
+    contents = contents + suffix
+    print(contents + suffix)
     party_id = part_dict.get(party)
     # 判断用户是否为空
     if (user) != None:
