@@ -37,6 +37,7 @@ jobs:
           body: file://morning_greetings.html
           to: xiaokang.188@qq.com
           from: GitHub Actions
+          convert_markdown: true
           content_type: text/html
       - name: 'Clean file' 
         run: rm -f morning_greetings.html
