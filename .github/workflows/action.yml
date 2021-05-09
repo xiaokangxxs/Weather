@@ -27,7 +27,7 @@ jobs:
       - name: 'Get Date'
         run: echo "APP_VERSION=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
       - name: 'Send mail'
-        uses: dawidd6/action-send-mail@master
+        uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.163.com
           server_port: 465
