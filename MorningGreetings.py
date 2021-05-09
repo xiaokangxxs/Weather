@@ -211,8 +211,7 @@ def main():
     corpid = args["corpid"]
     corpsecret = args["corpsecret"]
     contents = get_sendContent()
-    prefix = """<html>
-<head>
+    prefix = """<head>
 <meta name="viewport" content="width=device-width; height=device-height;">
 <link rel="stylesheet" href="resource://content-accessible/ImageDocument.css">
 <link rel="stylesheet" href="resource://content-accessible/TopLevelImageDocument.css">
@@ -224,8 +223,7 @@ def main():
 </body>
 <div style="all: initial;">
 <div style="all: initial;" id="__hcfy__"></div>
-</div>
-</html>"""
+</div>"""
     print(prefix + contents + suffix)
     party_id = part_dict.get(party)
     # 判断用户是否为空
