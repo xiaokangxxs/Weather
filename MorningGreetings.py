@@ -17,6 +17,7 @@ import time
 from hashlib import md5
 import logging
 from optparse import OptionParser
+import sys
 
 filelog = logging.FileHandler(filename='./morning_greetings_action.log', mode='a', encoding='utf-8')
 fmt = logging.Formatter(fmt="%(asctime)s - %(name)s - %(levelname)s :  %(message)s", datefmt='%Y-%m-%d %H:%M:%S')
@@ -210,15 +211,28 @@ def main():
     corpid = args["corpid"]
     corpsecret = args["corpsecret"]
     contents = get_sendContent()
-
-    print(contents)
+    prefix = """<html>
+<head>
+<meta name="viewport" content="width=device-width; height=device-height;">
+<link rel="stylesheet" href="resource://content-accessible/ImageDocument.css">
+<link rel="stylesheet" href="resource://content-accessible/TopLevelImageDocument.css">
+<link rel="stylesheet" href="chrome://global/skin/media/TopLevelImageDocument.css">
+<title>60s读懂世界</title>
+</head>
+<body><p>"""
+    suffix = """</p><img src="http://api.03c3.cn/zb/" alt="微信公众号：小康新鲜事儿" class="shrinkToFit transparent" width="72" height="271">
+</body>
+<div style="all: initial;">
+<div style="all: initial;" id="__hcfy__"></div>
+</div>
+</html>"""
+    print(prefix + contents + suffix)
     party_id = part_dict.get(party)
     # 判断用户是否为空
     if (user) != None:
         users = '|'.join(user.split(','))
     else:
         users = ''
-
     # 判断一下部门是否为空
     if party != None:
         party = party_id
