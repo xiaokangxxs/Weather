@@ -199,7 +199,7 @@ def greetings():
 def get_sendContent():
     sendContent = greetings() + "\n" + get_week_day(datetime.date.today()) + "\n\n" + str(
         get_bd_top_list()).replace(
-        "', '", '\n').replace("['", "").replace("']", "") + "\n\n" + get_daily_sentence()
+        "', '", '\n').replace("['", "").replace("']", "") + "\n\n" + get_daily_sentence() + "\n"
     return sendContent
 
 
@@ -211,9 +211,9 @@ def main():
     corpid = args["corpid"]
     corpsecret = args["corpsecret"]
     contents = get_sendContent()
-    suffix = """[60秒读懂世界]("http://api.03c3.cn/zb/")"""
+    suffix = """![60秒读懂世界]("http://api.03c3.cn/zb/")"""
     contents = contents + suffix
-    print(contents + suffix)
+    print(contents)
     party_id = part_dict.get(party)
     # 判断用户是否为空
     if (user) != None:
