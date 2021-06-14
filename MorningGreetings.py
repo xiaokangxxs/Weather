@@ -9,7 +9,7 @@ Site : www.xiaokang.cool
 """
 import requests
 import simplejson as json
-from lxml import etree
+from bs4 import BeautifulSoup
 import fake_useragent
 import uuid
 import datetime
@@ -148,16 +148,16 @@ def get_week_day(date):
 
 
 def get_bd_top_list():
-    url = "http://top.baidu.com/"
-    r = requests.get(url, headers=get_fake_ua())
-    r.encoding = 'gb2312'
-    tree = etree.HTML(r.text)
-    li_list = tree.xpath('//*[@id="hot-list"]/li')
+    requests_page = requests.get('http://top.baidu.com/buzz?b=1&c=513&fr=topbuzz_b42_c513')
+    soup = BeautifulSoup(requests_page.text, "lxml")
+    soup_text = soup.find_all("a", class_='list-title')
+    i = 0
     top_list = []
-    for li in li_list:
-        num = li_list.index(li) + 1
-        title = li.xpath('./a/@title')[0]
-        top_list.append(str(num) + ':' + title)
+    for text in soup_text:
+        i += 1
+        top_list.append("[" + text.string.encode("latin1").decode("GBK") + "](" + text['href'] + ")")
+        if i == 10:
+            break
     return top_list
 
 
