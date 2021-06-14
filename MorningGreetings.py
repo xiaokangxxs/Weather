@@ -155,7 +155,7 @@ def get_bd_top_list():
     top_list = []
     for text in soup_text:
         i += 1
-        top_list.append(i + "、" + text.string.encode("latin1").decode("GBK"))
+        top_list.append(str(i) + "、" + text.string.encode("latin1").decode("GBK"))
         if i == 10:
             break
     return top_list
