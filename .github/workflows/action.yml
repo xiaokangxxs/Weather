@@ -27,18 +27,5 @@ jobs:
         run: bash greetings.sh ${{ secrets.USER }} ${{ secrets.PARTY }} ${{ secrets.CORP_ID }} ${{ secrets.CORP_SECRET }}
       - name: 'Get Date'
         run: echo "APP_VERSION=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
-      - name: 'Send mail'
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.163.com
-          server_port: 465
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: Greetings-xiaokang
-          body: file://morning_greetings.html
-          to: xiaokang.188@qq.com
-          from: GitHub Actions
-          convert_markdown: true
-          content_type: text/html
       - name: 'Clean file' 
         run: rm -f morning_greetings.html
