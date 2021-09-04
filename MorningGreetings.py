@@ -236,7 +236,7 @@ def greetings():
 #    return sendContent
 
 def get_sendContent():
-    sendContent = greetings() + "\n" + get_weather_today() + "\n"
+    sendContent = greetings() + "\n" + get_weather_today()
     return sendContent
 
 
@@ -249,7 +249,7 @@ def main():
     corpsecret = args["corpsecret"]
     contents = get_sendContent()
     suffix = """![60秒读懂世界](http://api.03c3.cn/zb/)"""
-    contents = contents + suffix
+    contents = contents + "\n-----------------------------------------\n" + suffix
     print(contents)
     party_id = part_dict.get(party)
     # 判断用户是否为空
