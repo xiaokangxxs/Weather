@@ -212,10 +212,10 @@ def get_weather_today():
                    "\n日期： " + date + " 星期: " + week + "\n天气: " + weather_type + "\n温度: " + wendu_high + " / "+ wendu_low + "\n湿度: " + \
                     shidu + "\nPM25: " + pm25 + "\nPM10: " + pm10 + "\n空气质量: " + quality + \
                    "\n风力风向: " + fx + fl + "\n感冒指数: "  + ganmao + "\n温馨提示： " + tips + "\n更新时间: " + update_time
-            return str(word).encode('utf-8')
+            return word
     except:
         msg='【出现错误】\n　　今日天气推送错误，请检查服务或网络状态！'
-        return str(msg).encode('utf-8')
+        return msg
 
 def greetings():
     hour = int(time.strftime('%H', time.localtime(time.time())))
