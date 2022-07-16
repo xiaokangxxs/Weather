@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Date : 2021/5/3 7:24
+update : 2022/07/16 17:45
 Author : 小康
 description ：每日清晨问候-Github Action驱动
 Site : www.xiaokang.cool
@@ -9,6 +10,7 @@ Site : www.xiaokang.cool
 """
 import requests
 import simplejson as json
+import json
 from bs4 import BeautifulSoup
 import fake_useragent
 import uuid
@@ -174,6 +176,22 @@ def get_wb_top_list():
     return top_list
 
 
+def get_zhihu_list():
+    requests.packages.urllib3.disable_warnings()
+    url = "https://https-github-com-xiaokangxxs-xiaokang-api.vercel.app/api/news"
+    r = requests.get(url, verify=False)
+    resp = json.loads(r.text)
+    weiyu = resp.get('data').get('weiyu')
+    news = resp.get('data').get('news')
+    i = 0
+    zhihu_list = []
+    for new in news:
+        i += 1
+        zhihu_list.append(str(i) + "、" + new)
+        if i == 10:
+            break
+    return zhihu_list, weiyu
+
 def get_daily_sentence():
     url = "http://open.iciba.com/dsapi/"
     r = requests.get(url, headers=get_fake_ua())
@@ -236,7 +254,8 @@ def greetings():
 #    return sendContent
 
 def get_sendContent():
-    sendContent = greetings() + "\n" + get_weather_today()
+	zhihu_list, weiyu = get_zhihu_list()
+    sendContent = greetings() + "\n" + get_weather_today() + "\n\n" + str(zhihu_list).replace("', '", '\n').replace("['", "").replace("']", "") + "\n\n" + weiyu + +"\n\n" + get_daily_sentence() + "\n\n"
     return sendContent
 
 

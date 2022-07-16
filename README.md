@@ -1,7 +1,9 @@
-GitHub Actions:  用电子邮件发送每日问候-xiaokang
+~~GitHub Actions:  用电子邮件发送每日问候-xiaokang
+
+GitHub Actions:  企业微信发送每日问候-xiaokang
 
 > 微信公众号：小康新鲜事儿
-> 微信小程序：小康的宝藏库
+> 微信小程序：小康的宝藏库(暂时弃用)
 
 ## References
 

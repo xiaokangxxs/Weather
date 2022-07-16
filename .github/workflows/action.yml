@@ -23,9 +23,9 @@ jobs:
             pip install -U simplejson
             pip install -U lxml
             pip install -U fake_useragent
-      - name: 'Morning Greetings' 
-        run: bash greetings.sh ${{ secrets.USER }} ${{ secrets.PARTY }} ${{ secrets.CORP_ID }} ${{ secrets.CORP_SECRET }}
       - name: 'Get Date'
         run: echo "APP_VERSION=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
+      - name: 'Morning Greetings' 
+        run: bash greetings.sh ${{ secrets.USER }} ${{ secrets.PARTY }} ${{ secrets.CORP_ID }} ${{ secrets.CORP_SECRET }}
       - name: 'Clean file' 
         run: rm -f morning_greetings.html
