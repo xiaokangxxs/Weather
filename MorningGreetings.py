@@ -228,10 +228,10 @@ def get_weather_today():
             ganmao = d["data"]["ganmao"]  # 感冒指数
             tips = d["data"]["forecast"][0]["notice"]  # 温馨提示
             # 天气提示内容
-            word = "-----------------------------------------" + "\n【今日份天气】\n城市： " + parent + city + \
+            word = "--------------------------------------" + "\n【今日份天气】\n城市： " + parent + city + \
                    "\n日期： " + date + " 星期: " + week + "\n天气: " + weather_type + "\n温度: " + wendu_high + " / " + wendu_low + "\n湿度: " + \
                    shidu + "\nPM25: " + pm25 + "\nPM10: " + pm10 + "\n空气质量: " + quality + \
-                   "\n风力风向: " + fx + fl + "\n感冒指数: " + ganmao + "\n温馨提示： " + tips + "\n更新时间: " + update_time
+                   "\n风力风向: " + fx + fl + "\n温馨提示： " + tips + "\n更新时间: " + update_time
             return word
     except:
         msg = '【出现错误】\n　　今日天气推送错误，请检查服务或网络状态！'
@@ -274,7 +274,7 @@ def main():
     corpsecret = args["corpsecret"]
     contents = get_sendContent()
     suffix = """![60秒读懂世界](http://api.03c3.cn/zb/)"""
-    contents = contents + "\n-----------------------------------------\n" + suffix
+    contents = contents + "\n--------------------------------------\n" + suffix
     print(contents)
     party_id = part_dict.get(party)
     # 判断用户是否为空
