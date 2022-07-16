@@ -229,8 +229,7 @@ def get_weather_today():
             tips = d["data"]["forecast"][0]["notice"]  # 温馨提示
             # 天气提示内容
             word = "--------------------------------------" + "\n【今日份天气】\n城市： " + parent + city + \
-                   "\n日期： " + date + " 星期: " + week + "\n天气: " + weather_type + "\n温度: " + wendu_high + " / " + wendu_low + "\n湿度: " + \
-                   shidu + "\nPM25: " + pm25 + "\nPM10: " + pm10 + "\n空气质量: " + quality + \
+                   "\n日期： " + date + " " + week + "\n天气: " + weather_type + "\n温度: " + wendu_high + " / " + wendu_low + "\nPM25: " + pm25 + "\n空气质量: " + quality + \
                    "\n风力风向: " + fx + fl + "\n温馨提示： " + tips + "\n更新时间: " + update_time
             return word
     except:
@@ -241,11 +240,11 @@ def get_weather_today():
 def greetings():
     hour = int(time.strftime('%H', time.localtime(time.time())))
     if hour <= 8:
-        return "小康，早上好！\n"
+        return "小康，早上好！"
     if hour >= 12 and hour <= 14:
-        return "小康，中午好！\n"
+        return "小康，中午好！"
     if hour >= 21 and hour <= 23:
-        return "小康，晚上好！\n"
+        return "小康，晚上好！"
     else:
         return "认真生活,努力长大-Github Action强力驱动"
 
