@@ -274,7 +274,7 @@ def main():
     corpsecret = args["corpsecret"]
     contents = get_sendContent()
     suffix = """![60秒读懂世界](http://api.03c3.cn/zb/)"""
-    contents = contents + "\n--------------------------------------\n" + suffix
+    contents = contents + "--------------------------------------\n" + suffix
     print(contents)
     party_id = part_dict.get(party)
     # 判断用户是否为空
