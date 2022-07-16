@@ -260,7 +260,7 @@ def get_sendContent():
     sendContent = greetings() + "\n" + get_weather_today() + "\n\n" + str(zhihu_list).replace("', '", '\n').replace(
         "['",
         "").replace(
-        "']", "") + "\n\n" + get_daily_sentence() + "\n\n"
+        "']", "") + "\n\n" + get_daily_sentence() + "\n"
     return sendContent
 
 
