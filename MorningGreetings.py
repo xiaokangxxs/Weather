@@ -258,11 +258,10 @@ def greetings():
 
 def get_sendContent():
     zhihu_list, weiyu = get_zhihu_list()
-
     sendContent = greetings() + "\n" + get_weather_today() + "\n\n" + str(zhihu_list).replace("', '", '\n').replace(
         "['",
         "").replace(
-        "']", "") + "\n\n" + weiyu + +"\n\n" + get_daily_sentence() + "\n\n"
+        "']", "") + "\n\n" + weiyu + "\n\n" + get_daily_sentence() + "\n\n"
     return sendContent
 
 
