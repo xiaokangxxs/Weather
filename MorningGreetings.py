@@ -229,7 +229,7 @@ def get_weather_today():
             tips = d["data"]["forecast"][0]["notice"]  # 温馨提示
             # 天气提示内容
             word = "--------------------------------------" + "\n【今日份天气】\n城市： " + parent + city + \
-                   "\n日期： " + date + " " + week + "\n天气: " + weather_type + "\n温度: " + wendu_high + " / " + wendu_low + "\n空气质量: " + quality + "PM2.5为" + pm25 + \
+                   "\n日期： " + date + " " + week + "\n天气温度: " + weather_type + "，" + wendu_high + " / " + wendu_low + "\n空气质量: " + quality + "，PM2.5为" + pm25 + \
                    "\n风力风向: " + fx + fl + "\n温馨提示： " + tips + "\n更新时间: " + update_time
             return word
     except:
