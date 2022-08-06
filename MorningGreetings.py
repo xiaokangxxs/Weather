@@ -230,7 +230,7 @@ def get_weather_today():
             # 天气提示内容
             word = "--------------------------------------" + "\n【今日份天气】\n城市： " + parent + city + \
                    "\n日期： " + date + " " + week + "\n天气温度: " + weather_type + "，" + wendu_high + " / " + wendu_low + "\n空气质量: " + quality + "，PM2.5为" + pm25 + \
-                   "\n风力风向: " + fx + fl + "\n温馨提示： " + tips + "\n更新时间: " + update_time
+                   "\n风力风向: " + fx + fl + "\n温馨提示： " + tips + "\n更新时间: " + update_time + "\n\nhttp://api.03c3.cn/zb/"
             return word
     except:
         msg = '【出现错误】\n　　今日天气推送错误，请检查服务或网络状态！'
@@ -272,8 +272,8 @@ def main():
     corpid = args["corpid"]
     corpsecret = args["corpsecret"]
     contents = get_sendContent()
-    suffix = "http://api.03c3.cn/zb/"
-    contents = contents + "--------------------------------------\n" + suffix
+    # suffix = "http://api.03c3.cn/zb/"
+    # contents = contents + "--------------------------------------\n" + suffix
     print(contents)
     party_id = part_dict.get(party)
     # 判断用户是否为空
