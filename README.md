@@ -9,3 +9,5 @@ GitHub Actions:  企业微信发送每日问候-xiaokang
 
 - [signalnerve/github-actions-weather-bot](https://github.com/signalnerve/github-actions-weather-bot)
 - [chubin/wttr.in](https://github.com/chubin/wttr.in)
+
+手动激活：20221204
