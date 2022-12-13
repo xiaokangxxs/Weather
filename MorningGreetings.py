@@ -188,7 +188,7 @@ def get_zhihu_list():
     for new in news:
         i += 1
         zhihu_list.append(str(i) + "、" + new)
-        if i == 10:
+        if i == 5:
             break
     return zhihu_list, weiyu
 
